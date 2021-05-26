@@ -53,7 +53,8 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 ## Credits
 libMcServerProxy would not be possible without these open source repos! Huge thanks to them :D
-[hexene-LocalVPN](https://github.com/hexene/LocalVPN)
+
+[hexene-LocalVPN](https://github.com/hexene/LocalVPN) - Backbone VPN Service, Core of program!!
 
 ## License
 GPLv3

@@ -51,6 +51,9 @@ try {
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
+## Credits
+libMcServerProxy would not be possible without these open source repos! Huge thanks to them :D
+[hexene-LocalVPN](https://github.com/hexene/LocalVPN)
 
 ## License
 GPLv3

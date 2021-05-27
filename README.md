@@ -59,7 +59,7 @@ libMcServerProxy would not be possible without these open source repos! Huge tha
 ## License
 GPLv3
 
-    Copyright (C) 2020 Harishankar Kumar
+    Copyright (C) 2021 Harishankar Kumar
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or

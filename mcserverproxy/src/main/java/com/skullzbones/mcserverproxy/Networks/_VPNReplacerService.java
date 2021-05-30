@@ -120,7 +120,7 @@ public class _VPNReplacerService extends VpnService {
       } catch (PackageManager.NameNotFoundException e) {
         e.printStackTrace();
       }
-      vpnInterface = builder.setSession(getString(R.string.app_name))
+      vpnInterface = builder.setSession("libMcServerProxy")
           .setConfigureIntent(pendingIntent).establish();
     }
   }

@@ -11,6 +11,10 @@ public class MBuilder {
   private String serverIp;
   private int serverPort;
 
+  private boolean supressStoragePermissions = false;
+  private String inGameName;
+  private String gameSkinBase64;
+
   public MBuilder(Context context) {
     mContext = context;
   }
@@ -18,6 +22,21 @@ public class MBuilder {
   public MBuilder setTargetServer(String ip, int port) {
     this.serverIp = ip;
     this.serverPort = port;
+    return this;
+  }
+
+  public MBuilder setInGameName(String name) {
+    this.inGameName = name;
+    return this;
+  }
+
+  public MBuilder setGameSkin(String gameSkinBase64) {
+    this.gameSkinBase64 = gameSkinBase64;
+    return this;
+  }
+
+  public MBuilder setSuppressStoragePermissions(boolean b) {
+    this.supressStoragePermissions = b;
     return this;
   }
 
@@ -40,4 +59,17 @@ public class MBuilder {
   public int getServerPort() {
     return this.serverPort;
   }
+
+  public String getInGameName() {
+    return this.inGameName;
+  }
+
+  public String getGameSkinBase64() {
+    return this.gameSkinBase64;
+  }
+
+  public boolean getSuppressStoragePermissions() {
+    return this.supressStoragePermissions;
+  }
+
 }

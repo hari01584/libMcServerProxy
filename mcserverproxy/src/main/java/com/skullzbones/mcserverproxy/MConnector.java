@@ -20,6 +20,12 @@ public class MConnector {
 
   private final MBuilder builder;
 
+  /**
+   * Prepares the builder for taking arguments
+   *
+   * @param context
+   * @return
+   */
   public static MBuilder with(Context context) {
     return new MBuilder(context);
   }

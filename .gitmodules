@@ -1,0 +1,3 @@
+[submodule "sampleapp"]
+	path = sampleapp
+	url = https://github.com/hari01584/__libMcProxyExample_SampleModule/

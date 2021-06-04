@@ -34,16 +34,21 @@ public class MConnector {
    * @throws NoVPNException             Permission for vpn not given.
    * @throws ServerNotSetException      Server ip or port is invalid or empty.
    * @throws MinecraftNotFoundException No valid minecraft versions to launch is found.
+   * @throws StoragePermissionNotGiven  Storage perms not given
    */
-  public void start() throws NoVPNException, ServerNotSetException, MinecraftNotFoundException {
+  public void start()
+      throws NoVPNException, ServerNotSetException, MinecraftNotFoundException, StoragePermissionNotGiven {
     sanitize();
 
     // Set data if required
     if (builder.getInGameName() != null) {
-      MFileWriteUtils.writeName(builder.getContext(), builder.getInGameName());
+      MFileWriteUtils.writeName(builder.getInGameName());
+    }
+    if(builder.getGameSkinUri() != null){
+      MFileWriteUtils.pasteSkin(builder.getContext(), builder.getGameSkinUri());
     }
 
-      _VPNReplacerService localVPNService = new _VPNReplacerService();
+    _VPNReplacerService localVPNService = new _VPNReplacerService();
     Intent intentStart = new Intent(builder.getContext(), localVPNService.getClass());
     intentStart.putExtra(_VPNReplacerService.FLAG_SERVIP, builder.getServerIp());
     intentStart.putExtra(_VPNReplacerService.FLAG_SERVPORT, builder.getServerPort());
@@ -59,13 +64,13 @@ public class MConnector {
   }
 
   /**
-   * Sanitize parameters and prepare them before starting, throws appropriate errors if anything bad
-   * is found.
+   * Sanitize parameters and prepare them before starting, throws appropriate errors.
    *
-   * @throws ServerNotSetException Server ip or port is invalid or empty.
-   * @throws NoVPNException        Permission for vpn not given.
+   * @throws ServerNotSetException     Server ip or port is invalid or empty.
+   * @throws NoVPNException            Permission for vpn not given.
+   * @throws StoragePermissionNotGiven Storage permission not given.
    */
-  private void sanitize() throws ServerNotSetException, NoVPNException {
+  private void sanitize() throws ServerNotSetException, NoVPNException, StoragePermissionNotGiven {
     Intent prepare = VpnService.prepare(builder.getContext());
     if (prepare != null) {
       throw new NoVPNException();
@@ -73,7 +78,7 @@ public class MConnector {
     if (builder.getServerIp() == null || builder.getServerIp().isEmpty()) {
       throw new ServerNotSetException();
     }
-    if (builder.getInGameName() != null || builder.getGameSkinBase64() != null) {
+    if (builder.getInGameName() != null || builder.getGameSkinUri() != null) {
       int permissionCheckWrite = ContextCompat.checkSelfPermission(builder.getContext(),
           permission.WRITE_EXTERNAL_STORAGE);
       int permissionCheckRead = ContextCompat.checkSelfPermission(builder.getContext(),

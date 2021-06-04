@@ -1,0 +1,3 @@
+rootProject.name = "libMcProxyExample"
+include ':app'
+include ':mcserverproxy'

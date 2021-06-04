@@ -40,8 +40,8 @@ Note: The class throws multiple exceptions so be sure to catch them! Also it nee
 try {
   MConnector.with(getContext())
     .setTargetServer("play.cubecraft.net", 19132)
-	.setInGameName("Player1234")
-	.setGameSkin(<Image uri>.toString())
+    .setInGameName("Player1234")
+    .setGameSkin(<Image uri>.toString())
     .setSuppressStoragePermissions(false)
     .start();
 } catch (NoVPNException e) {

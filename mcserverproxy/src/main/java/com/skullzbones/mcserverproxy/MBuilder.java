@@ -4,6 +4,7 @@ import android.content.Context;
 import com.skullzbones.mcserverproxy.Exceptions.MinecraftNotFoundException;
 import com.skullzbones.mcserverproxy.Exceptions.NoVPNException;
 import com.skullzbones.mcserverproxy.Exceptions.ServerNotSetException;
+import com.skullzbones.mcserverproxy.Exceptions.StoragePermissionNotGiven;
 
 public class MBuilder {
 
@@ -13,7 +14,7 @@ public class MBuilder {
 
   private boolean supressStoragePermissions = false;
   private String inGameName;
-  private String gameSkinBase64;
+  private String gameSkinUri;
 
   public MBuilder(Context context) {
     mContext = context;
@@ -30,8 +31,8 @@ public class MBuilder {
     return this;
   }
 
-  public MBuilder setGameSkin(String gameSkinBase64) {
-    this.gameSkinBase64 = gameSkinBase64;
+  public MBuilder setGameSkin(String gameSkinUri) {
+    this.gameSkinUri = gameSkinUri;
     return this;
   }
 
@@ -44,7 +45,8 @@ public class MBuilder {
     return new MConnector(this);
   }
 
-  public void start() throws NoVPNException, ServerNotSetException, MinecraftNotFoundException {
+  public void start()
+      throws NoVPNException, ServerNotSetException, MinecraftNotFoundException, StoragePermissionNotGiven {
     new MConnector(this).start();
   }
 
@@ -64,8 +66,8 @@ public class MBuilder {
     return this.inGameName;
   }
 
-  public String getGameSkinBase64() {
-    return this.gameSkinBase64;
+  public String getGameSkinUri() {
+    return this.gameSkinUri;
   }
 
   public boolean getSuppressStoragePermissions() {

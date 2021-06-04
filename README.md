@@ -6,11 +6,12 @@
 ![GitHub issues](https://img.shields.io/github/issues/hari01584/libMcServerProxy)
 
 libMcServerProxy is an *Android* library for brodcasting Minecraft servers to your lan without going through hassles of manually doing so! All been performed programmatically!
+
+**Why?**
+Imagine you want to create a server joining app, where you would let the user click on the server they would like to join and it will automatically open the game brodcasting the server in the LAN tab. All user needs is a simple click on the server to connect and it will start connecting! Easier than throwing them to inbuilt Servers tab and having them find their server in the long list(possibly if they could have) and playing on it(Such a mood kill)!!
+
 ## Installation
 Add to your build.gradle(root level):
-
-
-
 ```
 allprojects {
     repositories {
@@ -37,13 +38,18 @@ Note: The class throws multiple exceptions so be sure to catch them! Also it nee
 ```
 try {
   MConnector.with(getContext())
-    .setTargetServer("gh", 1235)
+    .setTargetServer("play.cubecraft.net", 19132)
+	.setInGameName("Player1234")
+	.setGameSkin(<Image uri>.toString())
+    .setSuppressStoragePermissions(false)
     .start();
 } catch (NoVPNException e) {
   e.printStackTrace();
 } catch (ServerNotSetException e) {
   e.printStackTrace();
 } catch (MinecraftNotFoundException e) {
+  e.printStackTrace();
+} catch (StoragePermissionNotGiven e) {
   e.printStackTrace();
 }
 ```
